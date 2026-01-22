@@ -1,37 +1,33 @@
 package pages;
 
-import org.openqa.selenium.By;
+import locators.LoginLocators;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
 
     WebDriver driver;
 
-    // Constructor
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    // Locators
-    By usernameField = By.id("loginusername");
-    By passwordField = By.id("loginpassword");
-    By loginButton = By.xpath("//button[text()='Log in']");
-    By closeButton = By.xpath("//button[text()='Close']");
+    public void clickLogin() {
+        driver.findElement(LoginLocators.loginButton).click();
+    }
 
-    // Actions
     public void enterUsername(String username) {
-        driver.findElement(usernameField).sendKeys(username);
+        driver.findElement(LoginLocators.usernameField).sendKeys(username);
     }
 
     public void enterPassword(String password) {
-        driver.findElement(passwordField).sendKeys(password);
+        driver.findElement(LoginLocators.passwordField).sendKeys(password);
     }
 
     public void clickLoginButton() {
-        driver.findElement(loginButton).click();
+        driver.findElement(LoginLocators.loginSubmit).click();
     }
 
-    public void closeLoginPopup() {
-        driver.findElement(closeButton).click();
+    public void closePopup() {
+        driver.findElement(LoginLocators.closeButton).click();
     }
 }
