@@ -2,27 +2,26 @@ package base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-
 import java.time.Duration;
 
-public class BaseTest {
+public class DriverFactory {
 
-    public static WebDriver driver;
+    private static WebDriver driver;
 
-    @BeforeClass
-    public void openBrowser() {
+    public static WebDriver getDriver() {
+        return driver;
+    }
 
+    public static void initDriver() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
         driver.get("https://www.demoblaze.com");
     }
 
-    @AfterClass
-    public void closeBrowser() {
-        driver.quit();
+    public static void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }
