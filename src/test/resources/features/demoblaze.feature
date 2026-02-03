@@ -9,3 +9,4 @@ Feature: Demoblaze Full Purchase Flow
     And user goes to cart
     And user places the order
     Then order should be placed successfully
+

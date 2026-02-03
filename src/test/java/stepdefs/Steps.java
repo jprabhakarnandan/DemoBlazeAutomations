@@ -9,7 +9,7 @@ import org.testng.Assert;
 import pages.CartPage;
 import pages.HomePage;
 import pages.ProductPage;
-
+import utils.ScreenshotUtil;
 import java.time.Duration;
 
 public class Steps {
@@ -64,6 +64,8 @@ public class Steps {
 
     @Then("order should be placed successfully")
     public void verifyOrder() {
+            ScreenshotUtil.takeScreenshot(driver, "Order_Placed");
+
         Assert.assertTrue(cart.isOrderPlaced(),
                 "Order not placed");
         driver.quit();
